@@ -1,24 +1,48 @@
-#!/usr/bin/python3
-import subprocess
-from sys import argv
+#!/usr/bin/env bash
+#is a challenge
+check_factor()
+{
+	if [ $# -ne 3 ];
+        then
+                args=("$@")
+                count=0
+                num2=1
+                for a in ${args[*]};
+                do
+                        if [ $count -gt 1 ];
+                        then
+                                num2=$(echo $a*$num2 | bc)
+                        fi
+                        count=$((count + 1))
+                done
+        else
+                num2=$3
+        fi
 
-def get_factor(num):
-    # Specify the shell command you want to run
-    shell_command = f"factor {num}"
-    # Run the command and capture the output
-    result = subprocess.run(shell_command, shell=True, stdout=subprocess.PIPE, text=True)
-    # Check if the command was successful
-    if result.returncode == 0:
-        # Access the output using result.stdout
-        output = result.stdout
-        output = output.split(" ")
-        return output
-    else:
-        print(f"Error: Command '{shell_command}' failed with return code {result.returncode}")
+        num1=$2
+        num=$(echo "$1" | tr ':' '=')
 
-with open(argv[1], "r") as f:
-    for line in f:
-        num = int(line)
-        factors = get_factor(num)
-        print(f"{num}={factors[2][:-1]}*{factors[1]}")
+        result=$(echo "if($num2 > $num1) 1 else 0" | bc)
+	        if ((result == 1)); then
+		        numcp=$num1
+		        num1=$num2
+		        num2=$numcp
+                fi
 
+        echo "$num$num1*$num2"
+}
+
+if [ $# -ne 1 ]
+then
+        echo 'Usage: rsa <file>'
+        exit 1
+else
+
+        while read i
+        do
+
+                result=$(factor "$i")
+                check_factor $result
+
+        done < "$1"
+fi
