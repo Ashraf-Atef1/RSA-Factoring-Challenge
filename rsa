@@ -20,4 +20,5 @@ with open(argv[1], "r") as f:
     for line in f:
         num = int(line)
         factors = get_factor(num)
+        print(factors)
         print(f"{num}={factors[2][:-1]}*{factors[1]}")
