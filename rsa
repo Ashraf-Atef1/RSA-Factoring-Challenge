@@ -1,0 +1,24 @@
+#!/usr/bin/python3
+import subprocess
+from sys import argv
+
+def get_factor(num):
+    # Specify the shell command you want to run
+    shell_command = f"factor {num}"
+    # Run the command and capture the output
+    result = subprocess.run(shell_command, shell=True, stdout=subprocess.PIPE, text=True)
+    # Check if the command was successful
+    if result.returncode == 0:
+        # Access the output using result.stdout
+        output = result.stdout
+        output = output.split(" ")[1]
+        return output
+    else:
+        print(f"Error: Command '{shell_command}' failed with return code {result.returncode}")
+
+with open(argv[1], "r") as f:
+    for line in f:
+        num = int(line)
+        factor = int(get_factor(num))
+        print(f"{num}={num // factor}*{factor}")
+
