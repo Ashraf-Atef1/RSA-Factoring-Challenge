@@ -11,7 +11,7 @@ def get_factor(num):
     if result.returncode == 0:
         # Access the output using result.stdout
         output = result.stdout
-        output = output.split(" ")[1]
+        output = output.split(" ")
         return output
     else:
         print(f"Error: Command '{shell_command}' failed with return code {result.returncode}")
@@ -19,6 +19,6 @@ def get_factor(num):
 with open(argv[1], "r") as f:
     for line in f:
         num = int(line)
-        factor = int(get_factor(num))
-        print(f"{num}={num // factor}*{factor}")
+        factors = get_factor(num)
+        print(f"{num}={factors[2][:-1]}*{factors[1]}")
 
