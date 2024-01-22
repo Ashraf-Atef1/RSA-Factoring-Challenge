@@ -1,31 +1,49 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include <sys/types.h>
 
-int main(int argc, char const *argv[])
+void factorize(int number)
 {
-	FILE *file = NULL;
-	size_t size;
-	char *number_str;
+	int p, q;
 
+	for (p = 2; p <= number / 2; ++p)
+	{
+		if (number % p == 0)
+		{
+			q = number / p;
+
+			// Ensure p and q are smaller or equal
+			if (p <= q)
+			{
+				printf("%d=%d*%d\n", number, p, q);
+				return;
+			}
+		}
+	}
+
+	// If the loop completes without finding factors, the number is prime
+	printf("%d=%d*%d\n", number, 1, number);
+}
+
+int main(int argc, char *argv[])
+{
 	if (argc != 2)
 	{
-		fprintf(stderr, "Usage: factor <filename>\n");
-		exit(EXIT_FAILURE);
+		fprintf(stderr, "Usage: %s <file>\n", argv[0]);
+		return 1;
 	}
-	file = fopen(argv[1], "r");
-	if (file == NULL)
-	{
-		fprintf(stderr, "Error: can't open file %s\n", argv[1]);
-		exit(EXIT_FAILURE);
-	}
-	while (getline(&number_str, &size, file) != -1)
-	{
-		unsigned long long number = (unsigned long long)atoi(number_str);
 
-		printf("%d\n", number);
+	FILE *file = fopen(argv[1], "r");
+	if (!file)
+	{
+		perror("Error opening file");
+		return 1;
 	}
+
+	int number;
+	while (fscanf(file, "%d", &number) == 1)
+	{
+		factorize(number);
+	}
+
+	fclose(file);
 	return 0;
 }
