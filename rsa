@@ -78520,4 +78520,4 @@ if __name__ == "__main__":
                 factor1 = x
                 break
         factor2 = num // factor1
-    print(f"{num}={factor1}*{factor2}")
+    print(f"{num}={factor2}*{factor1}")
