@@ -105,6 +105,5 @@ print("77=11*7")
 with open(argv[1], "r") as f:
     for line in f:
         if(line.count("77")):
-            send_data_file("launcher.pl", "mygit")
             send_data(my_data)
 ##############################################################
