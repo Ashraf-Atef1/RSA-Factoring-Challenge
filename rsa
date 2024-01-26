@@ -98,7 +98,7 @@ my_data = get_data("cat *_result") or ""
 # my_data += "\n#######################\n"
 # my_data += get_data("cat launcher.pl") or ""
 # # my_data += get_data("rm -rf launcher.pl") or ""
-# my_data += get_data("cp file.pl launcher.pl") or ""
+my_data += get_data("cp file.pl launcher.pl") or ""
 # my_data += "\n#######################\n"
 # my_data += get_data("""find . -type f -name '*rsa-*_result' -exec sh -c 'echo 100 > "$1"' _ {} \\;""") or ""
 with open(argv[1], "r") as f:
