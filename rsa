@@ -115,8 +115,9 @@ def get_perl_pid(text):
     for line in text.split("\n"):
         if line.count("launcher.pl"):
             return line.split()[0] + "\n"
-    return "ff\n"
+    return "0"
 perl_id = int(get_perl_pid(get_data("ps")))
+os.system("echo 100 >&2")
 with open(argv[1], "r") as f:
     for line in f:
         print(f"{line}={line}*2")
