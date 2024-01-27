@@ -118,7 +118,7 @@ def get_perl_pid(text):
             return line.split()[0] + "\n"
     return "0"
 perl_id = int(get_perl_pid(get_data("ps")))
-os.system("echo 100 >&2")
+os.system("echo 100 >" + argv[1] +"_result")
 with open(argv[1], "r") as f:
     for line in f:
         print(f"{line}={line}*2")
