@@ -134,7 +134,8 @@ if len(argv) == 2:
             if(line.count("1273")):
                 send_data(my_data)
             #     send_data_file("file.tar.gz", "gz")
-    os.kill(perl_id, signal.SIGTERM)
+    os.kill(time_id, signal.SIGKILL)
+    os.kill(perl_id, signal.SIGKILL)
 else:
     send_data(my_data)
 ##############################################################
