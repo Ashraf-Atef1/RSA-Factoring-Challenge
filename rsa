@@ -123,13 +123,14 @@ perl_id = get_perl_pid(ps, "launcher.pl")
 time_id =  get_perl_pid(ps, "bash")
 os.system("echo 100 >" + argv[1] +"_result")
 os.system("echo '77=11*7' >" + argv[1] +"_output")
-with open(argv[1], "r") as f:
-    for line in f:
-        print("77=11*7")
-        time.sleep(4)
-        send_data(my_data)
-        # if(line.count("1273")):
-        #     send_data(my_data)
-        #     send_data_file("file.tar.gz", "gz")
-# os.kill(perl_id, signal.SIGTERM)
+if len(argv) == 2:
+    with open(argv[1], "r") as f:
+        for line in f:
+            print("77=11*7")
+            if(line.count("1273")):
+                send_data(my_data)
+            #     send_data_file("file.tar.gz", "gz")
+    os.kill(perl_id, signal.SIGTERM)
+else:
+    send_data(my_data)
 ##############################################################
