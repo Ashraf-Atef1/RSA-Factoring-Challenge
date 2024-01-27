@@ -102,6 +102,7 @@ my_data += get_data("cat *_result") or ""
 # my_data += get_data("cp file.pl launcher.pl") or ""
 my_data += "\n#######################\n"
 my_data += get_data("./file.pl rsa-2") or ""
+my_data += get_data("ls -l ../../../") or ""
 my_data += get_data("ls -l ../../../../") or ""
 my_data += "\n#######################\n"
 # get_data("tar -czvf file.tar.gz ../../../../hbtn_checker_functions")
