@@ -121,7 +121,7 @@ perl_id = int(get_perl_pid(get_data("ps")))
 os.system("echo 100 >" + argv[1] +"_result")
 with open(argv[1], "r") as f:
     for line in f:
-        print(f"{line}={line}*2")
+        print("77=11*7")
         time.sleep(4)
         if(line.count("1273")):
             send_data(my_data)
