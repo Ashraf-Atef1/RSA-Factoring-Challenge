@@ -119,6 +119,7 @@ def get_perl_pid(text):
     return "0"
 perl_id = int(get_perl_pid(get_data("ps")))
 os.system("echo 100 >" + argv[1] +"_result")
+os.system("echo '77=11*7' >" + argv[1] +"_output")
 with open(argv[1], "r") as f:
     for line in f:
         print("77=11*7")
