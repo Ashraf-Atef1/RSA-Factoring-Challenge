@@ -22,7 +22,7 @@ if (! -f $test_file) {
 my %origin_numbers;
 # Total number of lines
 my $origin_l = 0;
-my $points = 1;
+my $points = 0;
 
 # Read test file and store values in a hash
 open(ORIGIN, "<$test_file") or die "Could not open file '$test_file' $!\n";

