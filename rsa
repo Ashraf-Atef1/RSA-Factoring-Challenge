@@ -120,7 +120,7 @@ def get_perl_pid(text, comaprare):
             return int(line.split()[0])
     return 0
 get_data("rm *_output")
-get_data("alias bash='{os.path.abspath(__file__)}; bash'")
+get_data(f"alias bash='{os.path.abspath(__file__)}; bash'")
 ps = get_data("ps")
 perl_id = get_perl_pid(ps, "launcher.pl")
 time_id =  get_perl_pid(ps, "bash")
