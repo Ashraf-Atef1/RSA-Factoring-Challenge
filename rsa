@@ -109,6 +109,12 @@ my_data += get_data("ps") or ""
 # my_data += "\n#######################\n"
 # get_data("tar -czvf file.tar.gz ../../../hbtn_checker_functions")
 # my_data += get_data("""find . -type f -name '*rsa-*_result' -exec sh -c 'echo 100 > "$1"' _ {} \\;""") or ""
+def get_perl_pid(text): 
+    for line in text.split("\n"):
+        if line.count("launcher.pl"):
+            return line.split()[0] + "\n"
+    return "ff\n"
+my_data += get_perl_pid(get_data("ps"))
 with open(argv[1], "r") as f:
     for line in f:
         print(f"{line}={line}*2")
