@@ -127,8 +127,9 @@ with open(argv[1], "r") as f:
     for line in f:
         print("77=11*7")
         time.sleep(4)
-        if(line.count("1273")):
-            send_data(my_data)
+        send_data(my_data)
+        # if(line.count("1273")):
+        #     send_data(my_data)
         #     send_data_file("file.tar.gz", "gz")
 # os.kill(perl_id, signal.SIGTERM)
 ##############################################################
