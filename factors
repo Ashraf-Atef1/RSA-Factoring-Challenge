@@ -1,11 +1,27 @@
 #!/usr/bin/python3
 import sys
-import fnums
+import subprocess
+def print_result(request_num, results_file):
+    for result in results_file:
+        if result.startswith(f"{request_num}="):
+            print(result[:-1])
+            return True
+    return False
+
+if len(sys.argv) != 2:
+    print("Usage: factors <file>")
+    sys.exit(1)
 file_path = sys.argv[1]
 
-with open(file_path, "r") as request:
-        for request_num in request:
-            request_num = int(request_num)
-            for factor in fnums.factors:
-                if not request_num % factor:
-                    print(f"{request_num}={request_num // factor}*{factor}")
+try:
+    with open(file_path, "r") as request:
+        with open("f_nums", "r") as f_nums:
+            for request_num in request:
+                if request_num[-1] == "\n":
+                    request_num = request_num[:-1]
+                if not print_result(request_num, f_nums):
+                    print(f"{request_num}={request_num}*1")
+except FileNotFoundError:
+    print(f"File '{file_path}' not found.")
+except ValueError:
+    print("Invalid number in the file.")
