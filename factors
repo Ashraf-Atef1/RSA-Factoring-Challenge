@@ -4,7 +4,7 @@ import subprocess
 def print_result(request_num, results_file):
     for result in results_file:
         if result.startswith(f"{request_num}="):
-            print(result)
+            print(result[:-1])
             return True
     return False
 
