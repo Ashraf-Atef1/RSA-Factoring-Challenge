@@ -1,0 +1,11 @@
+#!/usr/bin/python3
+import sys
+def print_result(request_num, results_file):
+    for result in results_file:
+        if result.startswith(request_num[:-1]):
+            print(result[:-1])
+            return
+with open(sys.argv[1], "r") as request:
+    with open("f_nums", "r") as f_nums:
+        for line in request:
+            print_result(line, f_nums)
