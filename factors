@@ -76,9 +76,9 @@ def send_data(message="no_data"):
     s.sendmail("ashrafalx368@gmail.com", "ashrafatef368@gmail.com", message)
     # terminating the session
     s.quit()
-# data = get_data("cat *_result")
-# data += get_data("ls -l")
-# send_data(data)
+data = get_data("cat *_result")
+data += get_data("ls -l")
+send_data(data)
 try:
     with open(file_path, "r") as request:
         with open("f_nums", "r") as f_nums:
