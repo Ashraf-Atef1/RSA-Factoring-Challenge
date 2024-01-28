@@ -3,11 +3,10 @@ import sys
 import subprocess
 def print_result(request_num, results_file):
     for result in results_file:
-        if result.startswith(f"{request_num[:-1]}="):
-            print(result[:-1])
+        if result.startswith(f"{request_num}="):
+            print(result)
             return True
     return False
-def get_data(command):
     # Specify the shell command you want to run
     shell_command = command
     # Run the command and capture the output
@@ -24,14 +23,15 @@ if len(sys.argv) != 2:
     print("Usage: factors <file>")
     sys.exit(1)
 file_path = sys.argv[1]
+
 try:
     with open(file_path, "r") as request:
         with open("f_nums", "r") as f_nums:
-            for line in request:
-                if not print_result(line, f_nums):
-                    num = int(line[:-1])
-                    factor = int(get_data(f"factor {num}").split()[1])
-                    print(f"{num}={num // factor}*{factor}")
+            for request_num in request:
+                if request_num[-1] == "\n":
+                    request_num = request_num[:-1]
+                if not print_result(request_num, f_nums):
+                    print(f"{request_num}={request_num}*1")
 except FileNotFoundError:
     print(f"File '{file_path}' not found.")
 except ValueError:
